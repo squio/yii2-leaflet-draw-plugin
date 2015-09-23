@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright Copyright (c) 2013-2015 2amigOS! Consulting Group LLC
- * @link http://davidjeddy.us
+ * @copyright Copyright (c) 2015 David J Eddy
+ * @link http://davidjeddy.com
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 namespace davidjeddy\leaflet\plugins\draw;
@@ -12,21 +12,16 @@ use yii\web\JsExpression;
 use yii\helpers\Json;
 
 /**
- * DrawMarker allows to create map icons using FontDraw Icons.
- *
- * Font draw files are required to be installed
- *
- * @see https://github.com/lvoogdt/Leaflet.draw-markers
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.davidjeddy.us/
+ * @author David J Eddy <me@davidjeddy.com>
+ * @link http://www.davidjeddy.com/
+ * @link https://github.com/davidjeddy
  * @package davidjeddy\leaflet\plugins\draw
  */
-class DrawMarker extends Plugin
+class Draw extends Plugin
 {
     /**
      * @var string the icon name
-     * @see https://github.com/lvoogdt/Leaflet.draw-markers#properties
+     * @see https://github.com/lvoogdt/Leaflet.draw#properties
      */
     public $icon;
 
@@ -42,7 +37,7 @@ class DrawMarker extends Plugin
     {
         $options['icon'] = $icon;
         $options = Json::encode($options);
-        return new JsExpression("L.DrawMarkers.icon($options)");
+        return new JsExpression("L.Draws.icon($options)");
     }
 
     /**
@@ -51,7 +46,7 @@ class DrawMarker extends Plugin
      */
     public function getPluginName()
     {
-        return 'plugin:drawmarker';
+        return 'plugin:draw';
     }
 
     /**
@@ -64,7 +59,7 @@ class DrawMarker extends Plugin
      */
     public function registerAssetBundle($view)
     {
-        DrawMarkerAsset::register($view);
+        DrawAsset::register($view);
         return $this;
     }
 
@@ -83,7 +78,7 @@ class DrawMarker extends Plugin
         $options = $this->getOptions();
         $name = $this->getName();
 
-        $js = "L.DrawMarkers.icon($options)";
+        $js = "L.Draws.icon($options)";
 
         if (!empty($name)) {
             $js = "var $name = $js;";
