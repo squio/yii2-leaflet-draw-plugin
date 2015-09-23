@@ -1,22 +1,16 @@
-Awesome Plugin
-==============
+Leaflet Draw Plugin
+===================
 
-[![Latest Version](https://img.shields.io/github/tag/2amigos/yii2-leaflet-awesome-plugin.svg?style=flat-square&label=release)](https://github.com/2amigos/yii2-leaflet-awesome-plugin/tags)
+[![Latest Version](https://img.shields.io/github/tag/davidjeddy/yii2-leaflet-draw-plugin.svg?style=flat-square&label=release)](https://github.com/davidjeddy/yii2-leaflet-draw-plugin/tags)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/2amigos/yii2-leaflet-awesome-plugin/master.svg?style=flat-square)](https://travis-ci.org/2amigos/yii2-leaflet-awesome-plugin)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/2amigos/yii2-leaflet-awesome-plugin.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-leaflet-awesome-plugin/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/2amigos/yii2-leaflet-awesome-plugin.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-leaflet-awesome-plugin)
-[![Total Downloads](https://img.shields.io/packagist/dt/2amigos/yii2-leaflet-awesome-plugin.svg?style=flat-square)](https://packagist.org/packages/2amigos/yii2-leaflet-awesome-plugin)
+[![Build Status](https://img.shields.io/travis/davidjeddy/yii2-leaflet-draw-plugin/master.svg?style=flat-square)](https://travis-ci.org/davidjeddy/yii2-leaflet-draw-plugin)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/davidjeddy/yii2-leaflet-draw-plugin.svg?style=flat-square)](https://scrutinizer-ci.com/g/davidjeddy/yii2-leaflet-draw-plugin/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/davidjeddy/yii2-leaflet-draw-plugin.svg?style=flat-square)](https://scrutinizer-ci.com/g/davidjeddy/yii2-leaflet-draw-plugin)
+[![Total Downloads](https://img.shields.io/packagist/dt/davidjeddy/yii2-leaflet-draw-plugin.svg?style=flat-square)](https://packagist.org/packages/davidjeddy/yii2-leaflet-draw-plugin)
 
+Yii 2 [LeafletJs](http://leafletjs.com/) Plugin for the 2amigo Leaflet extention that adds the [Leaflet Draw](https://github.com/Leaflet/Leaflet.draw) functionality.
 
-Yii 2 [LeafletJs](http://leafletjs.com/) Plugin to create map icons using [Font Awesome](http://fontawesome.io/) and GlyphIcon Icons.
-
-This Plugin works in conjunction with [LeafLet](https://github.com/2amigos/yii2-leaflet-extension)
-library for [Yii 2](https://github.com/yiisoft/yii2) framework, Bootstrap and/or [Font Awesome](http://fontawesome.io/) iconic font and css toolkit. 
-
-In order to make it work with GlyphIcon (included with Bootstrap) or [Font Awesome](http://fontawesome.io/) files you need to add the required files your self.
-
-To swap betwen GlyphIcon (default) and FontAwesome, you just need to modify its prefix. Should work with other Font Toolkits as long as it follows the following class signature: "prefix prefix-iconname".
+This Plugin works in conjunction with [LeafLet](https://github.com/2amigos/yii2-leaflet-extension) library for [Yii 2](https://github.com/yiisoft/yii2) framework. 
 
 Installation
 ------------
@@ -25,12 +19,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require "2amigos/yii2-leaflet-awesome-plugin" "*"
+php composer.phar require "davidjeddy/yii2-leaflet-draw-plugin" "*"
 ```
 or add
 
 ```json
-"2amigos/yii2-leaflet-awesome-plugin" : "*"
+"davidjeddy/yii2-leaflet-draw-plugin" : "*"
 ```
 
 to the require section of your application's `composer.json` file.
@@ -39,25 +33,6 @@ Usage
 -----
 
 ```
-// LeafLet initialization component
-// ...
-
-// Initialize plugin
-$awesomeMarkers = new dosamigos\leaflet\plugins\awesome\AwesomeMarker(['name' => 'awesome']);
-
-// install
-$leafLet->installPlugin($awesomeMarkers);
-
-// sample location
-$center = new dosamigos\leaflet\types\LatLng(['lat' => 51.508, 'lng' => -0.11]);
-
-// generate icon through its icon
-$marker = new dosamigos\leaflet\layers\Marker([
-    'latLng' => $center,
-    'icon' => $leafLet->plugins->awesome->make("star",['markerColor' => "green", 'prefix' => "fa"]),
-    'popupContent' => 'Hey! I am a marker'
-]);
-
 ```
 
 Testing
@@ -83,6 +58,6 @@ License
 
 The BSD License (BSD). Please see [License File](LICENSE.md) for more information.
 
-> [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  
+> [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.davidjeddy.us)  
 <i>Web development has never been so fun!</i>  
-[www.2amigos.us](http://www.2amigos.us)
+[www.davidjeddy.us](http://www.davidjeddy.us)

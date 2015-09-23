@@ -1,5 +1,5 @@
 /*
-  Leaflet.AwesomeMarkers, a plugin that adds colorful iconic markers for Leaflet, based on the Font Awesome icons
+  Leaflet.Draw, a plugin that adds colorful iconic markers for Leaflet, based on the Font Awesome icons
   (c) 2012-2013, Lennard Voogdt
 
   http://leafletjs.com
@@ -11,14 +11,14 @@
 (function (window, document, undefined) {
     "use strict";
     /*
-     * Leaflet.AwesomeMarkers assumes that you have already included the Leaflet library.
+     * Leaflet.Draw assumes that you have already included the Leaflet library.
      */
 
-    L.AwesomeMarkers = {};
+    L.Draw = {};
 
-    L.AwesomeMarkers.version = '2.0.1';
+    L.Draw.version = '2.0.1';
 
-    L.AwesomeMarkers.Icon = L.Icon.extend({
+    L.Draw.Icon = L.Icon.extend({
         options: {
             iconSize: [35, 45],
             iconAnchor:   [17, 42],
@@ -115,8 +115,8 @@
       }
     });
         
-    L.AwesomeMarkers.icon = function (options) {
-        return new L.AwesomeMarkers.Icon(options);
+    L.Draw.icon = function (options) {
+        return new L.Draw.Icon(options);
     };
 
 }(this, document));

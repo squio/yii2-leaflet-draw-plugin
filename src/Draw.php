@@ -1,32 +1,32 @@
 <?php
 /**
  * @copyright Copyright (c) 2013-2015 2amigOS! Consulting Group LLC
- * @link http://2amigos.us
+ * @link http://davidjeddy.us
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-namespace dosamigos\leaflet\plugins\awesome;
+namespace davidjeddy\leaflet\plugins\draw;
 
 
-use dosamigos\leaflet\Plugin;
+use davidjeddy\leaflet\Plugin;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
 /**
- * AwesomeMarker allows to create map icons using FontAwesome Icons.
+ * DrawMarker allows to create map icons using FontDraw Icons.
  *
- * Font awesome files are required to be installed
+ * Font draw files are required to be installed
  *
- * @see https://github.com/lvoogdt/Leaflet.awesome-markers
+ * @see https://github.com/lvoogdt/Leaflet.draw-markers
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
- * @package dosamigos\leaflet\plugins\awesome
+ * @link http://www.davidjeddy.us/
+ * @package davidjeddy\leaflet\plugins\draw
  */
-class AwesomeMarker extends Plugin
+class DrawMarker extends Plugin
 {
     /**
      * @var string the icon name
-     * @see https://github.com/lvoogdt/Leaflet.awesome-markers#properties
+     * @see https://github.com/lvoogdt/Leaflet.draw-markers#properties
      */
     public $icon;
 
@@ -42,7 +42,7 @@ class AwesomeMarker extends Plugin
     {
         $options['icon'] = $icon;
         $options = Json::encode($options);
-        return new JsExpression("L.AwesomeMarkers.icon($options)");
+        return new JsExpression("L.DrawMarkers.icon($options)");
     }
 
     /**
@@ -51,7 +51,7 @@ class AwesomeMarker extends Plugin
      */
     public function getPluginName()
     {
-        return 'plugin:awesomemarker';
+        return 'plugin:drawmarker';
     }
 
     /**
@@ -64,7 +64,7 @@ class AwesomeMarker extends Plugin
      */
     public function registerAssetBundle($view)
     {
-        AwesomeMarkerAsset::register($view);
+        DrawMarkerAsset::register($view);
         return $this;
     }
 
@@ -83,7 +83,7 @@ class AwesomeMarker extends Plugin
         $options = $this->getOptions();
         $name = $this->getName();
 
-        $js = "L.AwesomeMarkers.icon($options)";
+        $js = "L.DrawMarkers.icon($options)";
 
         if (!empty($name)) {
             $js = "var $name = $js;";
