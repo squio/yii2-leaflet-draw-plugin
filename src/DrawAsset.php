@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright Copyright (c) 2013 2amigOS! Consulting Group LLC
- * @link http://davidjeddy.us
+ * @copyright Copyright (c) 2015 David J Eddy
+ * @link http://davidjeddy.com
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 namespace davidjeddy\leaflet\plugins\draw;
@@ -9,25 +9,22 @@ namespace davidjeddy\leaflet\plugins\draw;
 use yii\web\AssetBundle;
 
 /**
- * DrawMarkerAsset
+ * DrawAsset
  *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.davidjeddy.us/
+ * @author David J Eddy <me@davidjeddy.com>
+ * @link http://www.davidjeddy.com/
+ * @link https://github.com/davidjeddy
  * @package davidjeddy\leaflet\plugins\draw
  */
-class DrawMarkerAsset extends AssetBundle
+class DrawAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/davidjeddy/yii2-leaflet-draw-plugin/assets';
-
-    public $css = ['css/leaflet.draw-markers.css'];
-
-    public $depends = [
-        'davidjeddy\leaflet\LeafLetAsset',
-    ];
+	public $css        = ['leaflet.draw.css'];
+	public $depends    = ['dosamigos\leaflet\LeafLetAsset',];
+	public $js         = ['leaflet.draw.js'];
+	public $sourcePath = '@vendor/davidjeddy/yii2-leaflet-draw-plugin/jslib/dist/';
 
     public function init()
     {
-        $this->js[] = YII_DEBUG ? 'js/leaflet.draw-markers.js' : 'js/leaflet.draw-markers.min.js';
+    	// todo When in debug mode load the source files of Draw - DJE - 2015-09-23
     }
 }

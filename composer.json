@@ -1,6 +1,6 @@
 {
     "name": "davidjeddy/yii2-leaflet-draw-plugin",
-    "description": "Plugin for the 2amigo Leaflet extention that adds the Leaflet.Draw functionality.",
+    "description": "Plugin for the 2amigo Leaflet extension that adds the Leaflet.Draw functionality.",
     "keywords": [
         "davidjeddy",
         "yii",
@@ -39,9 +39,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "asset-installer-paths": {
             "bower-asset-library": "vendor/bower"
         }
