@@ -1,22 +1,31 @@
 <?php
 /**
+ *
+ * Draw.php
+ *
+ *
+ * 
  * @copyright Copyright (c) 2015 David J Eddy
  * @link http://davidjeddy.com
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
+
 namespace davidjeddy\leaflet\plugins\draw;
 
 use dosamigos\leaflet\Plugin;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
+
 /**
+ * Draw adds the ability to place line, shapes, and markers to your leaflet maps
+ * 
  * @author David J Eddy <me@davidjeddy.com>
  * @link http://www.davidjeddy.com/
  * @link https://github.com/davidjeddy
  * @package davidjeddy\leaflet\plugins\draw
  */
-class Draw extends \dosamigos\leaflet\controls
+class Draw extends Plugin
 {
     /**
      * @var string the name of the javascript variable that will hold the reference
