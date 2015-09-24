@@ -20,10 +20,32 @@ use yii\helpers\Json;
 class Draw extends Plugin
 {
     /**
-     * @var string the icon name
-     * @see https://github.com/lvoogdt/Leaflet.draw#properties
+     * Returns the javascript ready code for the object to render
+     * @return \yii\web\JsExpression
      */
-    public $icon;
+    public function encode()
+    {
+        $options = $this->getOptions();
+        $name = $this->getName();
+
+        $js = "L.Draws.draw($options)";
+
+        if (!empty($name)) {
+            $js = "var $name = $js;";
+        }
+
+        return new JsExpression($js);
+    }
+
+    /**
+     * Returns the plugin name
+     * @return string
+     */
+    public function getPluginName()
+    {
+
+        return 'plugin:draw';
+    }
 
     /**
      * Generates the code to generate a maki marker. Helper method made for speed purposes.
@@ -33,20 +55,10 @@ class Draw extends Plugin
      *
      * @return string the resulting js code
      */
-    public function make($icon, $options = [])
+    public function make($options = [])
     {
-        $options['icon'] = $icon;
         $options = Json::encode($options);
         return new JsExpression("L.Draws.icon($options)");
-    }
-
-    /**
-     * Returns the plugin name
-     * @return string
-     */
-    public function getPluginName()
-    {
-        return 'plugin:draw';
     }
 
     /**
@@ -62,29 +74,4 @@ class Draw extends Plugin
         DrawAsset::register($view);
         return $this;
     }
-
-    /**
-     * Returns the javascript ready code for the object to render
-     * @return \yii\web\JsExpression
-     */
-    public function encode()
-    {
-        $icon = $this->icon;
-
-        if (empty($icon)) {
-            return "";
-        }
-        $this->clientOptions['icon'] = $icon;
-        $options = $this->getOptions();
-        $name = $this->getName();
-
-        $js = "L.Draws.icon($options)";
-
-        if (!empty($name)) {
-            $js = "var $name = $js;";
-        }
-
-        return new JsExpression($js);
-    }
-
 }
