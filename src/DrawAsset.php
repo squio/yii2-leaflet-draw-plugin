@@ -18,13 +18,13 @@ use yii\web\AssetBundle;
  */
 class DrawAsset extends AssetBundle
 {
-	public $css        = ['leaflet.draw.css'];
-	public $depends    = ['\dosamigos\leaflet\LeafLetAsset'];
-	public $js         = ['leaflet.draw.js'];
-	public $sourcePath = '@bower/leaflet.draw/dist/';
+    public $css        = ['leaflet.draw.css'];
+    public $depends    = ['\dosamigos\leaflet\LeafLetAsset'];
+    public $js         = ['leaflet.draw.js'];
+    public $sourcePath = '@bower/leaflet.draw/dist/';
 
     public function init()
     {
-    	// todo When in debug mode load the source files of Draw - DJE - 2015-09-23
+        // todo When in debug mode load the source files of Draw - DJE - 2015-09-23
     }
 }
