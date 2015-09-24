@@ -7,7 +7,7 @@
 namespace davidjeddy\leaflet\plugins\draw;
 
 
-use davidjeddy\leaflet\Plugin;
+use dosamigos\leaflet\Plugin;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
