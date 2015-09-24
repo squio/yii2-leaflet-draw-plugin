@@ -6,8 +6,7 @@
  */
 namespace davidjeddy\leaflet\plugins\draw;
 
-
-use davidjeddy\leaflet\Plugin;
+use dosamigos\leaflet\Plugin;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
@@ -17,8 +16,30 @@ use yii\helpers\Json;
  * @link https://github.com/davidjeddy
  * @package davidjeddy\leaflet\plugins\draw
  */
-class Draw extends Plugin
+class Draw extends \dosamigos\leaflet\controls
 {
+    /**
+     * @var string the name of the javascript variable that will hold the reference
+     * to the map object.
+     */
+    public $map;
+    /**
+     * @var string the initial position of the control (one of the map corners).
+     */
+    public $position = 'topright';
+    /**
+     * @var array the options for the underlying LeafLetJs JS component.
+     * Please refer to the LeafLetJs api reference for possible
+     * [options](http://leafletjs.com/reference.html).
+     */
+    public $clientOptions = [];
+    /**
+     * @var string the variable name. If not null, then the js creation script
+     * will be returned as a variable. If null, then the js creation script will
+     * be returned as a constructor that you can use on other object's configuration options.
+     */
+    private $_name;
+
     /**
      * Returns the javascript ready code for the object to render
      * @return \yii\web\JsExpression
@@ -36,42 +57,37 @@ class Draw extends Plugin
 
         return new JsExpression($js);
     }
-
     /**
-     * Returns the plugin name
-     * @return string
+     * Returns the name of the layer.
+     *
+     * @param boolean $autoGenerate whether to generate a name if it is not set previously
+     *
+     * @return string name of the layer.
      */
-    public function getPluginName()
+    public function getName($autoGenerate = false)
     {
-
-        return 'plugin:draw';
+        if ($autoGenerate && $this->_name === null) {
+            $this->_name = LeafLet::generateName();
+        }
+        return $this->_name;
     }
 
     /**
-     * Generates the code to generate a maki marker. Helper method made for speed purposes.
+     * Sets the name of the layer.
      *
-     * @param string $icon the icon name
-     * @param array $options the maki marker icon
-     *
-     * @return string the resulting js code
+     * @param string $value name of the layer.
      */
-    public function make($options = [])
+    public function setName($value)
     {
-        $options = Json::encode($options);
-        return new JsExpression("L.Draws.icon($options)");
+        $this->_name = $value;
     }
 
     /**
-     * Registers plugin asset bundle
-     *
-     * @param \yii\web\View $view
-     *
-     * @return mixed
-     * @codeCoverageIgnore
+     * Returns the processed js options
+     * @return array
      */
-    public function registerAssetBundle($view)
+    public function getOptions()
     {
-        DrawAsset::register($view);
-        return $this;
+        return empty($this->clientOptions) ? '{}' : Json::encode($this->clientOptions);
     }
 }
