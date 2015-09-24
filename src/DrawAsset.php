@@ -21,7 +21,7 @@ class DrawAsset extends AssetBundle
 	public $css        = ['leaflet.draw.css'];
 	public $depends    = ['dosamigos\leaflet\LeafLetAsset',];
 	public $js         = ['leaflet.draw.js'];
-	public $sourcePath = '@vendor/davidjeddy/yii2-leaflet-draw-plugin/jslib/dist/';
+	public $sourcePath = '@bower/leaflet.draw/dist';
 
     public function init()
     {
