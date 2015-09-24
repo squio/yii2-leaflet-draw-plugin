@@ -41,13 +41,30 @@ class Draw extends Plugin
      * Please refer to the LeafLetJs api reference for possible
      * [options](http://leafletjs.com/reference.html).
      */
-    public $clientOptions = [];
+    public $options = [];
+
+    /* get/set methods */
+
     /**
-     * @var string the variable name. If not null, then the js creation script
-     * will be returned as a variable. If null, then the js creation script will
-     * be returned as a constructor that you can use on other object's configuration options.
+     * Returns the plugin name
+     * @return string
      */
-    private $_name;
+    public function getPluginName()
+    {
+
+        return 'leaflet:draw';
+    }
+
+    /**
+     * Returns the processed js options
+     * @return array
+     */
+    public function getOptions()
+    {
+        return empty($this->options) ? '{}' : Json::encode($this->options);
+    }
+
+    /* non get/set methods */
 
     /**
      * Returns the javascript ready code for the object to render
@@ -66,37 +83,16 @@ class Draw extends Plugin
 
         return new JsExpression($js);
     }
-    /**
-     * Returns the name of the layer.
-     *
-     * @param boolean $autoGenerate whether to generate a name if it is not set previously
-     *
-     * @return string name of the layer.
-     */
-    public function getName($autoGenerate = false)
-    {
-        if ($autoGenerate && $this->_name === null) {
-            $this->_name = LeafLet::generateName();
-        }
-        return $this->_name;
-    }
 
     /**
-     * Sets the name of the layer.
-     *
-     * @param string $value name of the layer.
+     * Registers plugin asset bundle
+     * @param \yii\web\View $view
+     * @return mixed
+     * @codeCoverageIgnore
      */
-    public function setName($value)
+    public function registerAssetBundle($view)
     {
-        $this->_name = $value;
-    }
-
-    /**
-     * Returns the processed js options
-     * @return array
-     */
-    public function getOptions()
-    {
-        return empty($this->clientOptions) ? '{}' : Json::encode($this->clientOptions);
+        DrawAsset::register($view);
+        return $this;
     }
 }
