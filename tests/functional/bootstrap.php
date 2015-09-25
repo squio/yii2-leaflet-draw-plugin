@@ -12,3 +12,4 @@ require_once(__DIR__ . '/../../../../yiisoft/yii2/Yii.php');
 require_once(__DIR__ . '/TestCase.php');
 
 Yii::setAlias('@tests', __DIR__);
+Yii::setAlias('@vendor', __DIR__.'/../../../../');

@@ -28,11 +28,11 @@ class DrawTest extends TestCase
         $this->assertArrayHasKey('tests\overrides\TestDrawAsset', $view->assetBundles);
 
         $this->assertEquals(
-            'js/l.control.Draw.js',
+            'leaflet.draw-src.js',
             $view->assetBundles['tests\overrides\TestDrawAsset']->js[0]
         );
         $this->assertEquals(
-            'js/l.Draw.provider.openstreetmap.js',
+            'leaflet.draw.js',
             $view->assetBundles['tests\overrides\TestDrawAsset']->js[1]
         );
     }

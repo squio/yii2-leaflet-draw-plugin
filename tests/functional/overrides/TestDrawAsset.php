@@ -7,5 +7,5 @@ use davidjeddy\leaflet\plugins\draw\DrawAsset;
 
 class TestDrawAsset extends DrawAsset
 {
-    public $sourcePath = '@tests/../../src/assets';
+    public $sourcePath = '@vendor/bower/leaflet.draw/dist/';
 }

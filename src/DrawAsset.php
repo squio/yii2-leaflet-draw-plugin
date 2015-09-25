@@ -21,7 +21,7 @@ class DrawAsset extends AssetBundle
     public $depends    = ['\dosamigos\leaflet\LeafLetAsset'];
     public $js         = [];
 
-    public $sourcePath = '@bower/leaflet.draw/dist';
+    public $sourcePath = '@vendor/bower/leaflet.draw/dist';
 
     public function init()
     {

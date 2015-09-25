@@ -21,9 +21,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
             [
                 'components' => [
                     'request' => [
-                        'class' => 'yii\web\Request',
-                        'url' => '/test',
+                        'class'                => 'yii\web\Request',
                         'enableCsrfValidation' => false,
+                        'url'                  => '/test',
                     ],
                     'response' => [
                         'class' => 'yii\web\Response',
@@ -48,9 +48,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         new $appClass(
             ArrayHelper::merge(
                 [
-                    'id' => 'testapp',
-                    'basePath' => __DIR__,
-                    'vendorPath' => $this->getVendorPath(),
+                    'basePath'   => '@tests',
+                    'id'         => 'testapp',
+                    'vendorPath' => '@vendor',
                 ],
                 $config
             )
@@ -60,27 +60,22 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
     {
         new $appClass(ArrayHelper::merge([
-            'id' => 'testapp',
-            'basePath' => __DIR__,
-            'vendorPath' => $this->getVendorPath(),
+            'id'         => 'testapp',
+            'basePath'   => '@tests',
+            'vendorPath' => '@vendor',
             'components' => [
                 'request' => [
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
-                    'scriptFile' => __DIR__ .'/index.php',
-                    'scriptUrl' => '/index.php',
+                    'scriptFile'          => '@tests' .'/index.php',
+                    'scriptUrl'           => '/index.php',
                 ],
                 'assetManager' => [
-                    'class' => 'tests\AssetManager',
                     'basePath' => '@tests/assets',
-                    'baseUrl' => '/',
+                    'baseUrl'  => '@tests',
+                    //'class'    => 'tests\AssetManager',
                 ]
             ]
         ], $config));
-    }
-
-    protected function getVendorPath()
-    {
-        return dirname(dirname(__DIR__)) . '/vendor';
     }
 
     /**
@@ -88,7 +83,8 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function destroyApplication()
     {
-        \Yii::$app = null;
+
+        return (\Yii::$app = null);
     }
 
     /**
@@ -99,10 +95,10 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     protected function getView()
     {
         $view = new View();
-        $view->setAssetManager(new AssetManager([
-            'basePath' => '@tests/assets',
+        /* $view->setAssetManager(new AssetManager([
+            'basePath' => '@vendor/leaflet.draw/dist',
             'baseUrl' => '/',
-        ]));
+        ])); */
         return $view;
     }
 
@@ -114,8 +110,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function assertEqualsWithoutLE($expected, $actual)
     {
-        $expected = str_replace("\r\n", "\n", $expected);
-        $actual = str_replace("\r\n", "\n", $actual);
-        $this->assertEquals($expected, $actual);
+        return $this->assertEquals(
+            str_replace("\r\n", "\n", $expected),
+            str_replace("\r\n", "\n", $actual)
+        );
     }
 }
