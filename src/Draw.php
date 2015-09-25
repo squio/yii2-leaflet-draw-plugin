@@ -31,17 +31,13 @@ class Draw extends Plugin
      * @var string the name of the javascript variable that will hold the reference
      * to the map object.
      */
-    public $map;
-    /**
-     * @var string the initial position of the control (one of the map corners).
-     */
-    public $position = 'topright';
+    public $map = 'map';
     /**
      * @var array the options for the underlying LeafLetJs JS component.
      * Please refer to the LeafLetJs api reference for possible
      * [options](http://leafletjs.com/reference.html).
      */
-    public $options = [];
+    public $options = null;
 
     /* get/set methods */
 
@@ -61,7 +57,10 @@ class Draw extends Plugin
      */
     public function getOptions()
     {
-        return empty($this->options) ? '{}' : Json::encode($this->options);
+        return ($this->options
+            ? json::encode($this->options)
+            : '{}'
+        );
     }
 
     /* non get/set methods */
@@ -72,14 +71,27 @@ class Draw extends Plugin
      */
     public function encode()
     {
-        $options = $this->getOptions();
-        $name = $this->getName();
+        $js = "
+            var editableLayers = new L.FeatureGroup();
+            {$this->map}.addLayer(editableLayers);
 
-        $js = "L.Draws.draw($options)";
+            var drawnItems = new L.FeatureGroup();
+            {$this->map}.addLayer(drawnItems);
 
-        if (!empty($name)) {
-            $js = "var $name = $js;";
-        }
+            var drawControl = new L.Control.Draw({$this->getOptions()});
+            {$this->map}.addControl(drawControl);
+
+            {$this->map}.on('draw:created', function (e) {
+                var type = e.layerType,
+                    layer = e.layer;
+
+                /* if (type === 'marker') {
+                    layer.bindPopup('A popup!');
+                } */
+
+                drawnItems.addLayer(layer);
+            });
+        ";
 
         return new JsExpression($js);
     }
