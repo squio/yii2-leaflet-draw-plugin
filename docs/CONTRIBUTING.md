@@ -9,7 +9,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/davidje
 
 - **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](http://pear.php.net/package/PHP_CodeSniffer).
 
-- **Add tests!** - Your patch won't be accepted if it doesn't have tests.
+- **Add tests!** - Your pull request won't be accepted if it doesn't have tests.
 
 - **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
 
@@ -21,12 +21,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/davidje
 
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
 
-
-## Running Tests
-
-``` bash
-$ phpunit
-```
-
-
 **Happy coding**!
+
+[CONTRIBUTING]
+[![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.davidjeddy.us) 
