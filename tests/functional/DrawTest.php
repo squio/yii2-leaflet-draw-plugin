@@ -12,42 +12,7 @@ class DrawTest extends TestCase
         $plugin = new TestDraw();
         $plugin->map = 'testMap';
         $this->assertEquals('plugin:Draw', $plugin->getPluginName());
-        $this->assertEquals(
-            'new L.Control.Draw({"provider":new L.Draw.Provider.OpenStreetMap(),"position":"topcenter","showMarker":true}).addTo(testMap)',
-            $plugin->encode()
-        );
 
-        $plugin->clientOptions = [];
-        $plugin->service = TestDraw::SERVICE_BING;
-        $this->assertEquals(
-            'new L.Control.Draw({"provider":new L.Draw.Provider.Bing(),"position":"topcenter","showMarker":true}).addTo(testMap)',
-            $plugin->encode()
-        );
-
-        $plugin->clientOptions = [];
-        $plugin->service = TestDraw::SERVICE_ESRI;
-        $this->assertEquals(
-            'new L.Control.Draw({"provider":new L.Draw.Provider.Esri(),"position":"topcenter","showMarker":true}).addTo(testMap)',
-            $plugin->encode()
-        );
-
-        $plugin->clientOptions = [];
-        $plugin->service = TestDraw::SERVICE_GOOGLE;
-        $this->assertEquals(
-            'new L.Control.Draw({"provider":new L.Draw.Provider.Google(),"position":"topcenter","showMarker":true}).addTo(testMap)',
-            $plugin->encode()
-        );
-
-        $plugin->clientOptions = [];
-        $plugin->service = TestDraw::SERVICE_NOKIA;
-        $plugin->name = 'test';
-        $this->assertEquals(
-            'var test = new L.Control.Draw({"provider":new L.Draw.Provider.Nokia(),"position":"topcenter","showMarker":true}).addTo(testMap);',
-            $plugin->encode()
-        );
-
-        $this->setExpectedException('yii\base\InvalidConfigException');
-        $plugin->service = 'wrongService';
         $plugin->encode();
     }
 

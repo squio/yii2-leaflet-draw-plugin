@@ -48,7 +48,7 @@ class Draw extends Plugin
     public function getPluginName()
     {
 
-        return 'leaflet:draw';
+        return 'plugin:Draw';
     }
 
     /**

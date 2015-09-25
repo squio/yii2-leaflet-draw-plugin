@@ -3,7 +3,7 @@
 namespace tests\overrides;
 
 
-use dosamigos\leaflet\plugins\Draw\DrawAsset;
+use davidjeddy\leaflet\plugins\draw\DrawAsset;
 
 class TestDrawAsset extends DrawAsset
 {
