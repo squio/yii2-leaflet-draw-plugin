@@ -10,7 +10,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 
-namespace sukung34\leaflet\plugins\draw;
+namespace squio\leaflet\plugins\draw;
 
 use dosamigos\leaflet\Plugin;
 use yii\web\JsExpression;

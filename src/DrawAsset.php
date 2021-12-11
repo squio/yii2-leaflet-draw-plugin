@@ -4,7 +4,7 @@
  * @link http://davidjeddy.com
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-namespace sukung34\leaflet\plugins\draw;
+namespace squio\leaflet\plugins\draw;
 
 use yii\web\AssetBundle;
 
