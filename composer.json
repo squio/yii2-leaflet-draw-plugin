@@ -1,5 +1,5 @@
 {
-    "name": "sqiuo/yii2-leaflet-draw-plugin",
+    "name": "squio/yii2-leaflet-draw-plugin",
     "description": "Plugin for the 2amigo Leaflet extension that adds the Leaflet.Draw v1.0 functionality.",
     "keywords": [
         "davidjeddy",
