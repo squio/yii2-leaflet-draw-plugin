@@ -86,6 +86,41 @@ Usage
     echo $leaflet->widget(['options' => ['style' => 'min-height: 300px']]);
 ```
 
+## Editing
+
+Very basic implementation; just two steps:
+
+- Construct a new `Layer` object containg the editable content 
+- Add a minimal `edit` sectin to options
+
+Example:
+
+```php
+$drawFeature = new \squio\leaflet\plugins\draw\Draw();
+
+// EXample uses polygon
+$areaLayer = new Polygon();
+// Cordinates of polygon in array of LatLng objects
+$areaLayer->setLatLngs($latLngs);
+// Add editlayer
+$drawFeature->addEditLayer($areaLayer);
+// Add 'edit' to config
+$drawFeature->options = [
+    "position" => "topright",
+    "edit" => [
+        // may be empty, but don't set "featureGroup" here!
+        "poly" => [
+            "allowIntersection" => false,
+        ],
+    ],
+    "draw" => [
+        // etc
+    ],
+];
+// etc...
+```
+
+
 Testing
 -------
 
@@ -96,7 +131,7 @@ TODO
 Todo
 ----
 
-ADD `edit` menu ability 
+~~ADD `edit` menu ability~~
 ADD custom marker functionality
 
 Contributing

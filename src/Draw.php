@@ -39,6 +39,8 @@ class Draw extends Plugin
      */
     public $options = null;
 
+    private $_editLayer = null;
+
     /* get/set methods */
 
     /**
@@ -57,13 +59,22 @@ class Draw extends Plugin
      */
     public function getOptions()
     {
-        return ($this->options
+        $options = ($this->options
             ? json::encode($this->options)
             : '{}'
         );
+        // Kludge: add bare JS name 'drawnItems'
+        $options = preg_replace('/"edit":{/', '"edit":{"featureGroup":drawnItems,', $options);
+        return $options;
     }
 
     /* non get/set methods */
+
+    public function addEditLayer($layer)
+    {
+        $this->_editLayer = $layer;
+        $this->_editLayer->name = null; // suppress assignment in encode
+    }
 
     /**
      * Returns the javascript ready code for the object to render
@@ -71,11 +82,16 @@ class Draw extends Plugin
      */
     public function encode()
     {
+        $drawnItems = 'var drawnItems = new L.FeatureGroup()';
+        if ($this->_editLayer) {
+            $drawnItems = 'var _editLayer = ' . $this->_editLayer->encode() . '; ';
+            $drawnItems .= 'var drawnItems = new L.FeatureGroup([_editLayer])';
+        }
         $js = "
             var editableLayers = new L.FeatureGroup();
             {$this->map}.addLayer(editableLayers);
 
-            var drawnItems = new L.FeatureGroup();
+            {$drawnItems};
             {$this->map}.addLayer(drawnItems);
 
             var drawControl = new L.Control.Draw({$this->getOptions()});

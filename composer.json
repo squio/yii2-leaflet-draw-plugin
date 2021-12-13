@@ -36,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "sukung34\\leaflet\\plugins\\draw\\": "src"
+            "squio\\leaflet\\plugins\\draw\\": "src"
         }
     },
     "extra": {
