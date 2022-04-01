@@ -28,7 +28,7 @@
         "source": "https://github.com/davidjeddy/yii2-leaflet-draw-plugin"
     },
     "require": {
-        "2amigos/yii2-leaflet-extension" : "~1.0",
+        "2amigos/yii2-leaflet-extension" : "*",
         "bower-asset/leaflet-draw": "~1.0"
     },
     "require-dev": {
